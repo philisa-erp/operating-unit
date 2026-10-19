@@ -4,6 +4,11 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestAccountBankStatementLine(BaseCommon):
+    # Odoo 20: BaseCommon runs each test as a plain internal user unless
+    # _test_user_groups is falsy (as AccountTestInvoicingCommon does). Keep the
+    # 19.0 behaviour (tests run as the setup user, with accounting access).
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
